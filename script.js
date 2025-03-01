@@ -9,15 +9,32 @@ function updateTime() {
   setInterval(updateTime, 1000);
   
   // Log in function
-  function login() {
-    const employeeId = document.getElementById('employeeId').value;
-    if (!employeeId) {
+async function login() {
+  const employeeId = document.getElementById('employeeId').value;
+  if (!employeeId) {
       alert("Please enter your Employee ID.");
       return;
-    }
-    document.getElementById('loginSection').classList.add('hidden');
-    document.getElementById('timeSection').classList.remove('hidden');
   }
+
+  try {
+      // Fetch employee data from Google Sheets
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxLgsPXWyZYmMkPP4q2YUmlHJ7xw6vgobGmecRpH3hOhgcAx6ybQ_6YMJwrmAudWuzqzQ/exec?action=getEmployees');
+      const employees = await response.json();
+
+      // Check if the employee ID exists in the fetched data
+      const employeeExists = employees.some(employee => employee.employeeNo === employeeId);
+
+      if (employeeExists) {
+          document.getElementById('loginSection').classList.add('hidden');
+          document.getElementById('timeSection').classList.remove('hidden');
+      } else {
+          alert("Employee ID not found. Please enter a valid Employee ID.");
+      }
+  } catch (error) {
+      console.error("Error fetching employee data:", error);
+      alert("Failed to fetch employee data. Please try again.");
+  }
+}
   
   // Log out function
   function logout() {
