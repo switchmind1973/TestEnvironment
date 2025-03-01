@@ -18,7 +18,7 @@ async function login() {
 
   try {
       // Fetch employee data from Google Sheets
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxLgsPXWyZYmMkPP4q2YUmlHJ7xw6vgobGmecRpH3hOhgcAx6ybQ_6YMJwrmAudWuzqzQ/exec?action=getEmployees');
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxox5GEWtCGmXhss01iHzZYTTlcliaqfku3xKPs2tteUbis16C8PTPEYvClnaOS_SWnlA/exec?action=getEmployees');
       const employees = await response.json();
 
       // Check if the employee ID exists in the fetched data
@@ -64,7 +64,7 @@ async function login() {
   
     const employeeId = document.getElementById('employeeId').value;
   
-    fetch('https://script.google.com/macros/s/AKfycbxSM5-qrNTqkZfPjfH3lWJt6vMMr-4EMQ70aRI_ahK1e6JVJkRIrZ9d_qpUK8svfEuI7g/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbxox5GEWtCGmXhss01iHzZYTTlcliaqfku3xKPs2tteUbis16C8PTPEYvClnaOS_SWnlA/exec', {
       method: 'POST',
       body: JSON.stringify({ employeeId: employeeId, reason: reason }),
       headers: { 'Content-Type': 'application/json' },
@@ -84,7 +84,7 @@ async function login() {
   function timeIn() {
     const employeeId = document.getElementById('employeeId').value;
   
-    fetch('https://script.google.com/macros/s/AKfycbxSM5-qrNTqkZfPjfH3lWJt6vMMr-4EMQ70aRI_ahK1e6JVJkRIrZ9d_qpUK8svfEuI7g/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbxox5GEWtCGmXhss01iHzZYTTlcliaqfku3xKPs2tteUbis16C8PTPEYvClnaOS_SWnlA/exec', {
       method: 'POST',
       body: JSON.stringify({ employeeId: employeeId, action: 'in' }),
       headers: { 'Content-Type': 'application/json' },
@@ -103,7 +103,7 @@ async function login() {
   function timeOut() {
     const employeeId = document.getElementById('employeeId').value;
   
-    fetch('https://script.google.com/macros/s/AKfycbxSM5-qrNTqkZfPjfH3lWJt6vMMr-4EMQ70aRI_ahK1e6JVJkRIrZ9d_qpUK8svfEuI7g/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbxox5GEWtCGmXhss01iHzZYTTlcliaqfku3xKPs2tteUbis16C8PTPEYvClnaOS_SWnlA/exec', {
       method: 'POST',
       body: JSON.stringify({ employeeId: employeeId, action: 'out' }),
       headers: { 'Content-Type': 'application/json' },
